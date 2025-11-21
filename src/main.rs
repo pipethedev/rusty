@@ -24,6 +24,9 @@ use settings::SETTINGS;
 
 #[tokio::main]
 async fn main() -> Result<(), std::io::Error> {
+    // Load .env file if it exists
+    dotenvy::dotenv().ok();
+
     let port = SETTINGS.server.port;
     let address = SocketAddr::from(([127, 0, 0, 1], port));
 
